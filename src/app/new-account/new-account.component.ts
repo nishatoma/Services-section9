@@ -15,7 +15,11 @@ export class NewAccountComponent {
   // By putting the service in the constructor, this is a good way
   // to instantiate.
   constructor (private loggingService: LoggingService, private accService: AccountsService) {
-
+    this.accService.statusChanged.subscribe(
+      (status: string) => {
+        alert('New status: ' + status);
+      }
+    );
   }
 
   onCreateAccount(accountName: string, accountStatus: string) {
